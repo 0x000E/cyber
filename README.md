@@ -1,2 +1,2 @@
 # cyber
-learn hwo to drive
+learn how to drive
