@@ -1,3 +1,5 @@
 .DS_Store
 .gitattributes
 .vscode
+src/__pycache*
+src/venv
