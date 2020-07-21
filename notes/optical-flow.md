@@ -19,4 +19,6 @@ of the entire frame (all pixels) - up to one flow vector per pixel.
 With this in mind, *dense optical flow* has a higher accuracy at
 the cost of being more computationally expensive. 
 
-![Sparse vs Dense Optical Flow](imgs/sparse-vs-dense.gif)
+<p align="center">
+  <img src="imgs/sparse-vs-dense.gif">
+</p>
