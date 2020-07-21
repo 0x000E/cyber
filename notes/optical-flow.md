@@ -23,7 +23,7 @@ has a higher accuracy at the cost of being more computationally expensive.
 
 ## Implementing Sparse Optical Flow
 
-*Sparse optical flow* selects a sparse feature set of pixels
+__*Sparse optical flow*__ selects a sparse feature set of pixels
 (i.e. features such as edges and corners) to track its velocity
 vectors (motion). The extracted features are passed in the optical
 flow function from frame to frame to ensure that the same points are
