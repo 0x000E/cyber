@@ -65,3 +65,16 @@ In a nutshell, we identify some interesting features to track and iteratively co
 </p>
 
 In a high-level view, small motions are neglected as we go up the pyramid and large motions are reduced to small motions - we compute optical flow along with scale. The documentation of OpenCV’s implementation of the Lucas-Kanade method via `calcOpticalFlowPyrLK()` may be found [here](https://docs.opencv.org/3.0-beta/modules/video/doc/motion_analysis_and_object_tracking.html#calcopticalflowpyrlk)
+
+## Implementing Dense Optical Flow
+
+Dense optical flow attempts to compute the optical flow vector for every pixel of each frame. While such computation may be slower, it gives a more accurate result and a denser result suitable for applications such as [Learning of Structure and Motion from Video](https://arxiv.org/abs/1704.07804) and 
+[video segmentation](http://files.is.tue.mpg.de/black/papers/TsaiCVPR2016.pdf). There are various implementations of dense optical flow, we will be using the __*Farneback method*__.
+
+#### Farneback Optical Flow
+
+Gunnar Farneback proposed an effective technique to estimate the motion of interesting features by comparing two consecutive frames in his paper [Two-Frame Motion Estimation Based on Polynomial Expansion](http://www.diva-portal.org/smash/get/diva2:273847/FULLTEXT01.pdf).
+
+First, the method approximates the windows of image frames by quadratic polynomials through polynomial expansion transform. Second, by observing how the polynomial transforms under translation (motion), a method to estimate displacement fields from polynomial expansion coefficients is defined. After a series of refinements, dense optical flow is computed.
+
+For OpenCV’s implementation, it computes the magnitude and direction of optical flow from a 2-channel array of flow vectors (__*dx/dt,dy/dt*__), the optical flow problem. It then visualizes the angle (direction) of flow by hue and the distance (magnitude) of flow by value of HSV color representation. The strength of HSV is always set to a maximum of 255 for optimal visibility. The documentation of OpenCV’s implementation of the Farneback method via `calcOpticalFlowFarneback()` may be found [here](https://docs.opencv.org/3.0-beta/modules/video/doc/motion_analysis_and_object_tracking.html#calcopticalflowfarneback).
