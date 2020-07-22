@@ -21,6 +21,10 @@ ret, first_frame = cap.read()
 # less computationally expensive
 prev_gray = cv.cvtColor(first_frame, cv.COLOR_BGR2GRAY)
 
+# Finds the strongest corners in the first frame by Shi-Tomasi method 
+# We will track the optical flow for these corners
+prev = cv.goodFeaturesToTrack(prev_gray, mask = None, **feature_params)
+
 while(cap.isOpened()):
     # ret = a boolean return value from getting the frame
     #  frame = the current frame being projected in the video
@@ -28,13 +32,10 @@ while(cap.isOpened()):
 
     # Converts each frame to grayscale
     gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
-
-    # Visualizes checkpoint 2
-    cv.imshow("grayscale", gray)
     
     # Updates previous frame
     prev_gray = gray.copy()
-    
+
     # Frames are read by intervals of 10 milliseconds.
     # The programs breaks out of the while loop when the user presses the 'q' key
     if cv.waitKey(10) & 0xFF == ord('q'):

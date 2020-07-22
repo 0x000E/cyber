@@ -30,3 +30,22 @@ flow function from frame to frame to ensure that the same points are
 being tracked. There are various implementations of
 *sparse optical flow*, including the [Lucas-Kanade](https://en.wikipedia.org/wiki/Lucas%E2%80%93Kanade_method) method, [Horn-Schunck](https://en.wikipedia.org/wiki/Horn%E2%80%93Schunck_method) method, and more. We will be using the
 __*Lucas-Kanade*__ method with `OpenCV`.
+
+#### Shi-Tomasi Corner Detector - selecting the pixels to track
+
+For the implementation of sparse optical flow, we only track the motion
+of a feature set of pixels. Features in images are points of interest which
+present rich content information. For example, such features may be points
+in the image that are invariant to translation, scale, rotation, and intensity
+such as corners.
+
+The [Shi-Tomasi Corner Detector](https://en.wikipedia.org/wiki/Corner_detection#The_Harris_&_Stephens_/_Shi%E2%80%93Tomasi_corner_detection_algorithms) is very similar to the Harris Corner Detector.
+
+<p align="center">
+  <img src="imgs/harris-vs-shi-tomasi.gif">
+</p>
+
+The documentation of OpenCV’s implementation of Shi-Tomasi via
+`goodFeaturesToTrack()` may be found [here](https://docs.opencv.org/3.0-beta/modules/imgproc/doc/feature_detection.html#goodfeaturestotrack).
+
+
