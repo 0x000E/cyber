@@ -49,3 +49,19 @@ The documentation of OpenCV’s implementation of Shi-Tomasi via
 `goodFeaturesToTrack()` may be found [here](https://docs.opencv.org/3.0-beta/modules/imgproc/doc/feature_detection.html#goodfeaturestotrack).
 
 
+#### Lucas-Kanade: Sparse Optical Flow
+
+Lucas and Kanade proposed an effective technique to estimate the motion of interesting 
+features by comparing two consecutive frames in their [paper](https://ri.cmu.edu/pub_files/pub3/lucas_bruce_d_1981_2/lucas_bruce_d_1981_2.pdf). The Lucas-Kanade method works under the following assumptions:
+
+  1. Two consecutive frames are separated by a small time increment (dt) such that objects are not displaced significantly (in other words, the method work best with slow-moving objects).
+
+  2. A frame portrays a “natural” scene with textured objects exhibiting shades of gray that change smoothly.
+
+In a nutshell, we identify some interesting features to track and iteratively compute the optical flow vectors of these points. However, adopting the Lucas-Kanade method only works for small movements (from our initial assumption) and fails when there is large motion. Therefore, the OpenCV implementation of the Lucas-Kanade method adopts pyramids.
+
+<p align="center">
+  <img src="imgs/lucas-kanade-pyramid.png">
+</p>
+
+In a high-level view, small motions are neglected as we go up the pyramid and large motions are reduced to small motions - we compute optical flow along with scale. The documentation of OpenCV’s implementation of the Lucas-Kanade method via `calcOpticalFlowPyrLK()` may be found [here](https://docs.opencv.org/3.0-beta/modules/video/doc/motion_analysis_and_object_tracking.html#calcopticalflowpyrlk)
