@@ -14,6 +14,6 @@ More details will be given as the project develops.
 
 ## License
 
-&copy; [Luis Maya Aranda](https://github.com/LuisMaya). All rights reserved.
+&copy; [Luis Maya Aranda](https://github.com/0x000E). All rights reserved.
 
 Licensed under the MIT License.
